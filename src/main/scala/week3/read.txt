@@ -1,0 +1,6 @@
+
+object -> singleton in scala
+
+refer to an object simply by naming it
+
+singleton objects are values
