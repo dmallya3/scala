@@ -1,18 +1,16 @@
 println("hello classes and objects")
 
+abstract class IntSet {
+  def incl(x: Int): IntSet
+  def contains(x: Int): Boolean
+  def union(other: IntSet): IntSet
+}
+
 object Empty extends IntSet {
   override def contains(x: Int): Boolean = false
   override def incl(x: Int): IntSet = new NonEmpty(x, Empty, Empty)
   override def toString = "."
-}
-
-
-val t1 = new NonEmpty(3, Empty, Empty)
-val t2 = t1 incl 4
-
-abstract class IntSet {
-  def incl(x: Int): IntSet
-  def contains(x: Int): Boolean
+  override def union(other: IntSet): IntSet = other
 }
 
 class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
@@ -27,4 +25,18 @@ class NonEmpty(elem: Int, left: IntSet, right: IntSet) extends IntSet {
     else this
 
   override def toString = "{" + left + elem + right + "}"
+
+  override def union(other: IntSet): IntSet =
+    ((left union right) union other) incl elem
 }
+
+trait Planar {
+  def length: Int
+  def width: Int
+  def surface = length * width
+}
+
+
+val t1 = new NonEmpty(3, Empty, Empty)
+val t2 = t1 incl 4
+val t3 = t1 union t2

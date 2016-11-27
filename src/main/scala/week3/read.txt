@@ -4,3 +4,44 @@ object -> singleton in scala
 refer to an object simply by naming it
 
 singleton objects are values
+
+scala uses dynamic method dispatch -> code invoked by a method call depends on the runtime type of the object that contains that method.
+
+---
+
+Classes and objects are organized into packages
+
+http://scala-lang.org/api/current/
+
+Traits:
+    - In Java & Scala, a class can have only one superclass -> single inheritence
+    - Similar to Interfaces in Java but more powerful
+
+Nothing -> subtype of all types
+
+throw Exc
+
+---
+
+abbreviation class Cons(val head: Int, val tail: IntList) --> this defines at the same time parameters and fields of a class.
+this is equivalent to:
+class Cons(_head: Int, _tail: Int) {
+    val head = _head
+    val tail = _tail
+}
+
+where _head and _tail are otherwise unused names
+
+type parameters are written in square brackets e.g. [T]
+
+trait List[T]
+
+val -> evaluated when object is first initialized
+def -> evaluated each time object is referenced
+
+
+types are erased at runtime -> type erasure -> used by Java, Scala, Haskell
+some languages keep types around at runtime like C++, C#, F#
+
+
+two forms of polymorphism:  subtyping, generics
